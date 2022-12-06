@@ -1,0 +1,19 @@
+APScheduler==3.9.1.post1
+certifi==2022.9.24
+charset-normalizer==2.1.1
+eco2ai @ file:///D:/_PROJECTS/_FEFU/_SMART_CAMPUS/fefu-eco2ai/eco2ai-0.3.4-py2.py3-none-any.whl
+idna==3.4
+numpy==1.23.5
+pandas==1.4.3
+psutil==5.9.4
+py-cpuinfo==9.0.0
+pynvml==11.4.1
+python-dateutil==2.8.2
+pytz==2022.6
+pytz-deprecation-shim==0.1.0.post0
+requests==2.28.1
+six==1.16.0
+tornado==6.2
+tzdata==2022.7
+tzlocal==4.2
+urllib3==1.26.13
