@@ -1,2 +1,5 @@
 venv/
 emission.csv
+build/
+dist/
+*.spec
