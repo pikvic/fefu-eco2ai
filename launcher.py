@@ -27,11 +27,16 @@ def update():
     print("Update Finished")
 
 def start():
-    for i, v in enumerate(worker.work()):
+    work = worker.work()
+    work.send(None)
+    for i, v in enumerate(work):
         print(v)
         if i % 5 == 0:
+            work.send(i)
             if check_updates():
                 break
+        else:
+            work.send(None)
     return True
 
 if __name__ == "__main__":
