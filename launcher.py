@@ -1,4 +1,3 @@
-import requests
 from pathlib import Path
 import worker
 from importlib import reload
@@ -66,6 +65,7 @@ if __name__ == "__main__":
     if not check_installation():
         print("Eco2AI is not installed. Exit")
         exit(0)
+    import requests
     while True:
         print("Starting worker...")
         needsUpdate = start()
