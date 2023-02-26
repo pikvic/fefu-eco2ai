@@ -3,3 +3,4 @@ emission.csv
 build/
 dist/
 *.spec
+__pycache__
