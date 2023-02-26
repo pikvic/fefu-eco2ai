@@ -5,6 +5,7 @@ import platform
 from time import sleep
 import time
 
+
 def make_report_dict(attr_dict: dict):
     return {
         "power_consumption": attr_dict["power_consumption(kWh)"][0],

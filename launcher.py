@@ -2,7 +2,21 @@ import requests
 from pathlib import Path
 import worker
 from importlib import reload
+import sys
+import subprocess
 
+# implement pip as a subprocess:
+#subprocess.check_call([sys.executable, '-m', 'pip', 'install', '<packagename>'])
+
+def check_installation():
+    result = subprocess.run([sys.executable, '-m', 'pip', 'freeze'], capture_output=True)
+    if 'eco2ai' in str(result.stdout):
+        return True
+    return False
+
+def install():
+    subprocess.run([sys.executable, '-m', 'pip', 'install', 'eco2ai'], capture_output=True)
+    
 
 version_raw_url = 'https://raw.githubusercontent.com/pikvic/fefu-eco2ai/main/version.txt'
 version_file = Path() / 'version.txt'
@@ -47,6 +61,11 @@ def start():
     return True
 
 if __name__ == "__main__":
+    if not check_installation():
+        install()
+    if not check_installation():
+        print("Eco2AI is not installed. Exit")
+        exit(0)
     while True:
         print("Starting worker...")
         needsUpdate = start()
