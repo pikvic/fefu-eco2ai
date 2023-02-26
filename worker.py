@@ -82,6 +82,7 @@ def work():
         context = yield {'send_counter': send_counter}
         if context is not None:
             tracker.stop()
+            break
 
         
         
