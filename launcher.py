@@ -56,6 +56,7 @@ def start():
         print(v)
         if i % 5 == 0:
             if check_updates():
+                print("Need to update")
                 work.send('stop')
                 break
             else:
