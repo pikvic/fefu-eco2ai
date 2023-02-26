@@ -1,5 +1,4 @@
 from pathlib import Path
-import worker
 from importlib import reload
 import sys
 import subprocess
@@ -66,6 +65,7 @@ if __name__ == "__main__":
         print("Eco2AI is not installed. Exit")
         exit(0)
     import requests
+    import worker
     while True:
         print("Starting worker...")
         needsUpdate = start()
