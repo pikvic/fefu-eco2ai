@@ -7,13 +7,18 @@ import subprocess
 #subprocess.check_call([sys.executable, '-m', 'pip', 'install', '<packagename>'])
 
 def check_installation():
+    print("Checking Installed Modules...")
     result = subprocess.run([sys.executable, '-m', 'pip', 'freeze'], capture_output=True)
     if 'eco2ai' in str(result.stdout):
+        print("Modules Installed.")
         return True
+    print("Needed modules aren't installed.")
     return False
 
 def install():
+    print("Installing Modules...")
     subprocess.run([sys.executable, '-m', 'pip', 'install', 'eco2ai'], capture_output=True)
+    print("Modules Installed.")
     
 
 version_raw_url = 'https://raw.githubusercontent.com/pikvic/fefu-eco2ai/main/version.txt'
@@ -47,13 +52,14 @@ def update():
 
 def start():
     work = worker.work()
-    work.send(None)
     for i, v in enumerate(work):
         print(v)
         if i % 5 == 0:
-            work.send(i)
             if check_updates():
+                work.send('stop')
                 break
+            else:
+                work.send(None)    
         else:
             work.send(None)
     return True

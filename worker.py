@@ -70,18 +70,18 @@ def work():
     register(tracker)
 
     prev = tracker.consumption()
-    emission_level = tracker.emission_level()
     prev_time = time.time()
     send_counter = 0
     while True:
-        #data = yield
         sleep(5)
         if time.time() - prev_time < MEASURE_PERIOD:
             continue
         prev_time = time.time()
         prev = send_data(tracker, prev)
         send_counter += 1
-        yield {'send_counter': send_counter}
+        context = yield {'send_counter': send_counter}
+        if context is not None:
+            tracker.stop()
 
         
         
