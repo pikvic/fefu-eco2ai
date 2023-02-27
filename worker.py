@@ -48,7 +48,7 @@ def send_data(tracker: eco2ai.Tracker, prev: float) -> float:
         print(f"ERROR: can't send data. {e}")
     return prev
 
-URL = os.getenv('BACKEND_URL', "http://10.193.1.97")
+URL = os.getenv('BACKEND_URL', "http://10.193.1.97:8000")
 MEASURE_PERIOD = 10
 MACHINE_NAME = platform.node()
 DESCRIPTION = "Test for eco2ai" 
