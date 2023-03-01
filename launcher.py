@@ -1,5 +1,5 @@
 from pathlib import Path
-from importlib import reload
+from importlib import reload, import_module
 import sys
 import subprocess
 
@@ -84,6 +84,7 @@ if __name__ == "__main__":
         exit(0)
     import requests
     init()
+    import_module("worker")
     import worker
     while True:
         print("Starting worker...")
