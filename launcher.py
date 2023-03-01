@@ -20,6 +20,17 @@ def install():
     subprocess.run([sys.executable, '-m', 'pip', 'install', 'eco2ai'], capture_output=True)
     print("Modules Installed.")
     
+def init():
+    try:
+        if not version_file.exists() or not worker_file.exists():
+            remote_version = requests.get(version_raw_url).text
+            worker_script = requests.get(worker_raw_url).text
+            with version_file.open("wt") as f:
+                f.write(remote_version)
+            with worker_file.open("wt") as f:
+                f.write(worker_script)    
+    except Exception as e:
+        print(e)
 
 version_raw_url = 'https://raw.githubusercontent.com/pikvic/fefu-eco2ai/main/version.txt'
 version_file = Path() / 'version.txt'
@@ -66,6 +77,7 @@ def start():
     return True
 
 if __name__ == "__main__":
+    init()
     if not check_installation():
         install()
     if not check_installation():
