@@ -82,8 +82,8 @@ if __name__ == "__main__":
     if not check_installation():
         print("Eco2AI is not installed. Exit")
         exit(0)
-    init()
     import requests
+    init()
     import worker
     while True:
         print("Starting worker...")
